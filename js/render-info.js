@@ -2,6 +2,20 @@ const APP_VERSION = '1.0';
 
 const APP_CHANGELOG = [
   {
+    version: '1.4',
+    groups: [
+      {
+        title: 'Behoben',
+        items: [
+          'Ein archiviertes Konto lässt sich wieder aktivieren. Im Reiter Konten steht dafür unten der Abschnitt „Archivierte Konten“ — antippen, und im Dialog steht statt „Archivieren“ jetzt „Wieder aktivieren“.',
+          'Vorher war ein Druck auf „Archivieren“ endgültig. Der Knopf sitzt im selben Dialog wie „Speichern“, und Karten gab es nur für nicht-archivierte Konten. Der einzige Ausweg war: alles als Datei sichern, die Datei von Hand ändern und wieder einlesen.',
+          'Der Gesamtsaldo oben passt wieder zu dem, was man sieht. Ein archiviertes Konto zählt weiter mit — bisher stand oben Geld, das auf keiner Karte mehr auftauchte, ohne jeden Hinweis woher. Jetzt steht die Summe der archivierten Konten in ihrem Abschnitt, und die Rückfrage beim Archivieren sagt es dazu.',
+          'Eine Umbuchung mit einem archivierten Konto zeigt wieder dessen Namen statt eines Fragezeichens.',
+        ],
+      },
+    ],
+  },
+  {
     version: '1.3',
     groups: [
       {

@@ -83,6 +83,17 @@ function archiveAccount(id) {
   saveAccounts(accounts);
 }
 
+// Der Rueckweg. Ohne ihn war ein versehentliches "Archivieren" endgueltig --
+// der Knopf sitzt im selben Dialog wie "Speichern", und Karten gab es nur fuer
+// nicht-archivierte Konten. Der einzige Ausweg war Export, Datei von Hand
+// bearbeiten und Import, der den ganzen Bestand ersetzt.
+function unarchiveAccount(id) {
+  const accounts = getAccounts();
+  const acc = accounts.find(a => a.id === id);
+  if (acc) acc.archived = false;
+  saveAccounts(accounts);
+}
+
 // ── Categories ───────────────────────────────────────────────────────────
 function getCategories(type) {
   return loadJson(type === 'income' ? STORAGE_KEYS.catIncome : STORAGE_KEYS.catExpense, []);

@@ -304,6 +304,23 @@ form select {
 .account-name { font-weight: 600; font-size: 16px; }
 .account-balance { font-weight: 700; font-size: 16px; margin-left: auto; }
 
+/* Archivierte Konten: eingeklappt, damit sie den Reiter nicht dominieren, aber
+   auffindbar — sie zählen weiter zum Gesamtsaldo. */
+.archived-accounts > summary {
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 15px;
+  padding: 4px 0;
+  list-style-position: inside;
+}
+.archived-accounts .archived-hint {
+  color: var(--color-text-muted);
+  font-size: 13px;
+  margin: 6px 0 2px;
+}
+.archived-accounts .account-name,
+.archived-accounts .account-balance { color: var(--color-text-muted); }
+
 .budget-item { flex-direction: column; align-items: stretch; gap: 6px; }
 .budget-top { display: flex; justify-content: space-between; align-items: baseline; }
 .budget-cat { font-weight: 600; }

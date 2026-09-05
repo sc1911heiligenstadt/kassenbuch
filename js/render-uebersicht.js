@@ -5,7 +5,8 @@ function renderUebersicht() {
   const total = getTotalBalance();
 
   const recent = sortedTransactionsDesc().slice(0, 5);
-  const accounts = getAccounts().filter(a => !a.archived);
+  // ALLE Konten: eine Buchung auf einem archivierten Konto zeigte sonst "?".
+  const accounts = getAccounts();
   const recentHtml = recent.length ? recent.map(t => renderTxnItem(t, accounts)).join('') :
     `<div class="empty-state">Noch keine Buchungen erfasst.</div>`;
 

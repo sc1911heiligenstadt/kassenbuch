@@ -8,7 +8,11 @@ let pendingReceiptOriginalHasReceipt = false;
 
 function renderBuchungen() {
   const view = document.getElementById('view-buchungen');
-  const accounts = getAccounts().filter(a => !a.archived);
+  // Für die Namensauflösung in den Zeilen ALLE Konten — eine Umbuchung mit
+  // einem archivierten Konto las sich sonst als „? → Bar“. Der Filter oben
+  // bietet weiter nur die aktiven an.
+  const alleKonten = getAccounts();
+  const accounts = alleKonten.filter(a => !a.archived);
 
   let txns = sortedTransactionsDesc();
   if (txnFilterMonth) txns = txns.filter(t => t.date.startsWith(txnFilterMonth));
@@ -26,7 +30,7 @@ function renderBuchungen() {
   const categoryOptions = allCats.map(c =>
     `<option value="${escapeHtml(c)}" ${txnFilterCategory === c ? 'selected' : ''}>${escapeHtml(c)}</option>`).join('');
 
-  const listHtml = txns.length ? txns.map(t => renderTxnItem(t, accounts)).join('') :
+  const listHtml = txns.length ? txns.map(t => renderTxnItem(t, alleKonten)).join('') :
     `<div class="empty-state">Keine Buchungen gefunden.</div>`;
 
   view.innerHTML = `
