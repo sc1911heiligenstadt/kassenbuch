@@ -42,8 +42,11 @@ automatischen Sicherungen.
 
 Unter **Einstellungen** lässt sich der komplette Stand als JSON-Datei sichern
 und wieder einlesen, und die Buchungen lassen sich als CSV für Excel
-exportieren. Zusätzlich legt die App automatisch Sicherungen an — jeder Stand
-lässt sich daraus wiederherstellen oder einzeln herunterladen. Belegfotos liegen
+exportieren. Zusätzlich legt die App automatisch Sicherungen an: beim ersten
+Öffnen an einem Tag entsteht ein Stand, behalten werden die letzten zehn. Jeder
+Stand lässt sich daraus wiederherstellen oder einzeln herunterladen. Diese
+Sicherungen liegen im Browser-Speicher desselben Geräts — die JSON-Datei ist
+die Sicherung zum Mitnehmen. Belegfotos liegen
 getrennt davon im Gerätespeicher; sie lassen sich gebündelt als ZIP-Datei
 sichern, in der Bildqualität einstellen oder komplett löschen.
 

@@ -60,6 +60,12 @@ function renderEinstellungen() {
 
     <div class="card">
       <h2>Automatische Backups</h2>
+      <p style="color:var(--color-text-muted);font-size:13px;margin:0 0 10px">
+        Beim ersten Öffnen an einem Tag legt die App von selbst einen Stand an.
+        Behalten werden die letzten ${MAX_BACKUPS} — der älteste fällt dann raus.
+        Sie liegen nur auf diesem Gerät; ein Backup zum Mitnehmen gibt es oben
+        unter „Daten“.
+      </p>
       <div id="backupList">${backupsHtml}</div>
     </div>
   `;

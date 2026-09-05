@@ -25,6 +25,8 @@ function rerenderAll() {
 
 function init() {
   seedDefaultsIfEmpty();
+  // Die "automatischen Backups" entstehen hier -- einmal je Tag beim Öffnen.
+  autoBackupIfDue();
 
   document.querySelectorAll('.tab-btn').forEach(btn => {
     btn.addEventListener('click', () => switchView(btn.dataset.view));

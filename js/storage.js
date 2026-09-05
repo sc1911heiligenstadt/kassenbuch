@@ -179,3 +179,31 @@ function pushBackup() {
 function deleteBackup(date) {
   saveJson(STORAGE_KEYS.backups, getBackups().filter(b => b.date !== date));
 }
+
+// ── Automatische Sicherung ───────────────────────────────────────────────
+// Die Karte heißt "Automatische Backups", der Info-Tab und die README sagen
+// dasselbe zu -- entstanden ist ein Stand aber nur durch den Knopf "Backup
+// jetzt anlegen" oder unmittelbar vor einem Import. Buchen, Ändern, Löschen,
+// Kategorien pflegen: nichts davon legte je einen Stand an. Wer die leere
+// Liste sah, hielt sie für "noch nichts passiert" statt "passiert nie".
+// Ausgerechnet die iPad-Falle (ITP löscht nach 7 Tagen Inaktivität) trifft
+// dann auf eine leere Historie.
+//
+// Fenster statt Stichtag: fällig ist eine Sicherung, wenn die jüngste älter
+// als AUTO_BACKUP_MIN_STUNDEN ist. Ein Tag, an dem die App nicht geöffnet
+// wurde, holt sich beim nächsten Öffnen nach, statt still ausgelassen zu
+// werden. Kosten: ein JSON-Schnappschuss je Tag, gedeckelt durch MAX_BACKUPS.
+const AUTO_BACKUP_MIN_STUNDEN = 24;
+
+function autoBackupIfDue(jetzt) {
+  const now = Number.isFinite(jetzt) ? jetzt : Date.now();
+  // Ein Bestand ohne eine einzige Buchung hat nichts zu sichern. Sonst
+  // stünden nach zehn Starts zehn identische Leerstände in der Historie und
+  // verdrängten die brauchbaren.
+  if (!getTransactions().length) return false;
+  const backups = getBackups();
+  const letzte = backups.length ? Date.parse(String(backups[backups.length - 1].date)) : NaN;
+  if (Number.isFinite(letzte) && now - letzte < AUTO_BACKUP_MIN_STUNDEN * 3600000) return false;
+  pushBackup();
+  return true;
+}

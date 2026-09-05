@@ -2,6 +2,19 @@ const APP_VERSION = '1.0';
 
 const APP_CHANGELOG = [
   {
+    version: '1.3',
+    groups: [
+      {
+        title: 'Behoben',
+        items: [
+          'Die automatischen Backups entstehen jetzt wirklich von selbst — einmal beim ersten Öffnen an einem Tag.',
+          'Vorher passierte das nie. Ein Stand kam nur zustande, wenn man in den Einstellungen auf „Backup jetzt anlegen“ drückte oder eine Datei einlas. Buchen, Ändern, Löschen: nichts davon legte etwas an. Die leere Liste sah aus wie „noch nichts passiert“, war aber „passiert nie“ — und genau darauf verlässt man sich, wenn der Browser die Daten weggeräumt hat.',
+          'Auf der Karte steht jetzt, wann ein Stand entsteht und wie viele behalten werden.',
+        ],
+      },
+    ],
+  },
+  {
     version: '1.2',
     groups: [
       {
